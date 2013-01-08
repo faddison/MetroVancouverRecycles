@@ -1,0 +1,87 @@
+html { height: 100% }
+
+body { height: 100%; margin: 0; padding: 0 }
+
+h5 { color:#A1CB41; font-size: 14px; font-family: inherit; }
+
+.depotinfo { color:#FEA635; font-size: 16px; }
+
+.links:link { color:#000000; text-decoration: none; }
+.links:hover { color:#FEA635; text-decoration: none; }
+.links { font-size: 14px; font-weight: bold; }
+
+.tabbers { color:#000000; font-size: 10px; margin-bottom: -5px; margin-top: -5px; }
+
+.green { color:#A1CB41; font-size: 14px; font-family: inherit; font-weight: bold; }
+
+#map_canvas { height: 610px; width: 544px; border: 2px solid #FEA635; margin-left: -22px; margin-right: -20px; margin-top: -12px; margin-bottom: -20px; }
+
+.header { width:100%; margin:0px; background-color:#A1CB41; height:140px; }
+
+.mvLogo { float:left; width:235px; height:138px; background:transparent no-repeat; position:absolute; top:0px; left:0px; z-index:1; }
+
+.mvRecycles { margin-left:auto; margin-right:auto; position:relative; z-index:5; top:15px;width:950px; height:82px; background:transparent no-repeat; }
+
+.recycleIcon {float:right; width:156px; height:158px; background:transparent no-repeat; position: absolute; top:1px;right:0px; z-index:1; }
+
+.search { background-color:#FFFFFF; padding-bottom: 25px; width: 900px; padding-top: 15px; margin-left: auto; margin-right: auto; }
+
+.searchSec { background-color:#FFFFFF; margin-top: 10px; padding-bottom: 10px; margin-left: 195px; }
+
+.searchText { margin-top: 40px; margin-left: 210px; }
+
+.buttons { margin-left: 220px; }
+
+.quick { margin-top: 25px; margin-left: 945px; margin-bottom: -12px; }
+
+.advanced { margin-top: 25px; margin-left: 920px; margin-bottom: -12px; }
+
+.border-right { border-right: 1px solid black; }
+
+.float-left { float: left; margin-right: 275px; }
+
+.adder { margin-bottom: -12px;}
+
+.float-left-smallest { float: left; margin-right: 35px; }
+
+.float-left-small { float: left; margin-right: 50px; }
+
+.float-left-medium { float:left; margin-right: 75px; }
+
+.float-left-medium-text { float:left; margin-right: 178px; }
+
+.form-inline { padding-bottom: 10px; }
+
+.float-right { float: right; }
+
+.right-border { border-right: solid 1px #A9A9A9; }
+
+.pad { margin-right: 310px; }
+
+.tablehead { color:#FFFFFF; padding-left: 50px; padding-top: 20px; }
+
+.depots { height: 625px; width: 40%; float:left; margin-top: 10px; margin-left: 13px; }
+
+.results { width: 995px; height: 750px; margin-left: auto; margin-right: auto; background: transparent url('../images/SearchResultsBG.png') no-repeat; }
+
+.leftTabsContainer { position: fixed; left: 0px; top: 200px; height: 555px; width: 45px; z-index: 300; }
+
+.rightside { height: 650px; width: 55%; float:right; margin-top: 25px; margin-right: 20px; }
+
+.infograph { margin-top: 25px; display: block; margin-left: auto; margin-right: auto; }
+
+.cityselect { width: 18%; margin-left: auto; margin-right: auto; margin-top: 25px; }
+
+.recyclable { margin-left: 300px; margin-top: 50px; float: left; margin-right: 50px; }
+
+.after { width: 90%; margin-left: auto; margin-right: auto; }
+
+.img { height: 200px; width: 300px; padding-top: 25px; }
+
+.bluebox { width: 12%; margin-left: auto; margin-right: auto; padding-top: 35px; padding-bottom: 25px; }
+
+.checkers { margin-bottom: -3px; }
+
+
+
+

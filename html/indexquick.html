@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+<meta charset='utf-8' name="viewport" content="initial-scale=1.0, user-scalable=no"/>
+
+<title>Metro Vancouver Recycles</title>
+
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.9.1/themes/base/jquery-ui.css" />
+<link rel="stylesheet" href="../css/bootstrap.css" />
+<link rel="stylesheet" href="../css/style.css" />
+<script src="http://code.jquery.com/jquery-1.8.2.js"></script>
+<script src="http://code.jquery.com/ui/1.9.1/jquery-ui.js"></script>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDq73a8G7Podf-O4448XegyuiQ107WzlLg&sensor=true"></script>
+
+<script type="text/javascript">
+var geocoder;
+var map;
+var myLat = 49.2404215;
+var myLng = -123.1164608;
+var myLatlng = new google.maps.LatLng(myLat,myLng);
+var infoWindow = new google.maps.InfoWindow();
+var marker1;
+var content1;
+var marker7;
+var content7;
+
+$(function() {
+    $( "#tabs" ).tabs();
+});
+
+function getDetails(num)
+{
+	if(num == 1){
+    	infoWindow.close();
+    	infoWindow.setContent(content1);
+    	infoWindow.open(map, marker1);
+	}
+	if(num == 2){
+    	infoWindow.close();
+    	infoWindow.setContent(content7);
+    	infoWindow.open(map, marker7);
+	}
+}
+
+function searchMat()
+{   
+    document.getElementById('depots').innerHTML = "";
+
+	geocoder = new google.maps.Geocoder();
+  	var mapDiv = document.getElementById('map_canvas');
+  	map = new google.maps.Map(mapDiv, {
+    	center: myLatlng,
+    	zoom: 10,
+    	mapTypeId: google.maps.MapTypeId.ROADMAP
+  	});
+
+  	var mat = document.getElementById('mat').value;
+  	if(mat == "")
+  	{
+  		alert('You must enter a value in order to search by material.');
+  	}
+  	else
+  	{
+  		var point = new google.maps.LatLng(49.2501930,-123.1049230);
+		marker1 = new google.maps.Marker({position: point, map: map, title: 'Fairway Disposal'});
+		content1 = '<b>Fairway Disposal</b></br>'+'1234 Fairview Ave., Vancouver, BC V6K 1P8</br>'+
+					'604-849-1435</br>'+'M-F 8-5, Sa-Su 9-4</br>';
+		google.maps.event.addListener(marker1, 'click', function() {
+        	infoWindow.close();
+        	infoWindow.setContent(content1);
+        	infoWindow.open(map, marker1);
+    	});
+
+    	var table = document.getElementById('depots');
+    	var row = document.createElement("tr");
+    	var cell1 = document.createElement("td");
+    	cell1.innerHTML = "<a href='javascript:void(0)' class='links' onclick='getDetails(1)'>Fairway Disposal</a>";
+    	var cell2 = document.createElement("td");
+    	cell2.innerHTML = 1;
+    	var cell3 = document.createElement("td");
+    	cell3.innerHTML = "N/A";
+    	
+    	row.appendChild(cell1);
+    	row.appendChild(cell2);
+    	row.appendChild(cell3);
+    	table.appendChild(row);
+  	}
+
+  	document.getElementById('mat').value = "";
+  	document.getElementById('fac').value = "";
+}
+
+function searchFac()
+{   
+    document.getElementById('depots').innerHTML = "";
+
+	geocoder = new google.maps.Geocoder();
+  	var mapDiv = document.getElementById('map_canvas');
+  	map = new google.maps.Map(mapDiv, {
+    	center: myLatlng,
+    	zoom: 10,
+    	mapTypeId: google.maps.MapTypeId.ROADMAP
+  	});
+
+  	var mat = document.getElementById('fac').value;
+  	if(mat == "")
+  	{
+  		alert('You must enter a value in order to search by facility.');
+  	}
+  	else
+  	{
+  		var point = new google.maps.LatLng(49.1590421,-123.0800008);
+  		marker7 = new google.maps.Marker({position: point, map: map, title: 'We Buy Garbage'});
+  		content7 = '<b>We Buy Garbage</b></br>'+'129 Brampton St., Richmond, BC V6K 1P8</br>'+
+          '604-849-1435</br>'+'M-F 8-5, Sa-Su 9-4</br>';
+  		google.maps.event.addListener(marker7, 'click', function() {
+        	infoWindow.close();
+        	infoWindow.setContent(content7);
+        	infoWindow.open(map, marker7);
+    	});
+
+    	var table = document.getElementById('depots');
+    	var row = document.createElement("tr");
+    	var cell1 = document.createElement("td");
+    	cell1.innerHTML = "<a href='javascript:void(0)' class='links' onclick='getDetails(2)'>We Buy Garbage</a>";
+    	var cell2 = document.createElement("td");
+    	cell2.innerHTML = 1;
+    	var cell3 = document.createElement("td");
+     	cell3.innerHTML = "N/A"; 
+    	row.appendChild(cell1);
+    	row.appendChild(cell2);
+    	row.appendChild(cell3);
+    	table.appendChild(row);	
+  	}  
+
+  	document.getElementById('mat').value = "";
+  	document.getElementById('fac').value = "";
+}
+
+function initialize() 
+{
+  geocoder = new google.maps.Geocoder();
+  var mapDiv = document.getElementById('map_canvas');
+  map = new google.maps.Map(mapDiv, {
+    center: myLatlng,
+    zoom: 10,
+    mapTypeId: google.maps.MapTypeId.ROADMAP
+  });
+}
+
+</script>
+
+</head>
+
+<body onload="initialize()">
+
+<div class="header">
+	<div class="mvLogo"><img src="../images/MVLogo.jpeg"></div>
+	<div class="mvRecycles"><img src="../images/MVRecycles.png"></div>
+	<div class="recycleIcon"><img src="../images/Icon.png"></div>
+</div>
+
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar-inner">
+   	    <div class="container">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <div class="nav-collapse collapse">
+            <ul class="nav">
+              <li class="active"><a href="index.html">RECYCLING SERVICES</a></li>
+              <li><a href="bluebox.html">BLUE BOX INFO</a></li>
+              <li><a href="zerowaste.html">ZERO WASTE INFO</a></li>
+            </ul>
+          </div>
+        </div>
+    </div>
+</div>
+
+<div class="leftTabsContainer">
+	<a target="_blank" href="http://www.facebook.com/share.php?u=http://www.metrovancouverrecycles.org">	
+	<img src="../images/FaceBook.png" alt="Facebook" title="Facebook" hover="../images/FaceBookHover.png"></a>
+
+	<a href="https://twitter.com/intent/tweet?text=Metro%20Vancouver%20Recycles%20http://www.metrovancouverrecycles.org" target="_blank">
+	<img src="../images/Twitter.png" alt="Twitter" title="Twitter" hover="../images/TwitterHover.png"></a>
+
+	<a href="contact.html">
+	<img src="../images/ContactUs.png" alt="Contact Us" title="ContactUs" hover="../images/ContactUsHover.png"></a>
+
+	<a href="about.html">
+	<img src="../images/AboutUs.png" alt="About Us" title="About us" hover="../images/AboutUsHover.png"></a>
+</div>
+
+<div class="advanced">
+    <ul class="nav">
+      <a href="index.html"><li class="btn btn-primary">Advanced Search</li></a>
+    </ul>
+</div>
+
+<div class="searchText">
+<div class="float-left-medium-text">
+	<label>Search by Material:</label>
+</div>
+<div>
+	<label>Search by Facility:</label>	
+</div>
+</div>
+
+<div class="form-search searchSec">
+  <div class="input-append float-left-medium">
+    <input type="text" class="span2 search-query" id="mat" placeholder="Enter a material...">
+    <button type="submit" class="btn btn-primary" onclick="searchMat()">Search</button>
+  </div>
+  <div class="input-append">
+    <input type="text" class="span2 search-query" id="fac" placeholder="Enter a facility...">
+    <button type="submit" class="btn btn-primary" onclick="searchFac()">Search</button>
+  </div>
+</div>
+
+<div class="results">
+
+<h5 class="tablehead" id="head"> SEARCH RESULTS </h5>
+
+<div class="depots">
+	<table class="table table-hover">
+
+		<thead>
+    		<tr>
+      		<th><h5>FACILITY</h5></th>
+     	 	<th><h5># OF ITEMS</h5></th>
+     	 	<th><h5>DISTANCE</h5></th>
+    		</tr>
+  	</thead>
+
+    <tbody id="depots">
+
+    </tbody>
+
+	</table>
+</div>
+
+<div id="tabs" class="rightside">
+    <ul>
+        <li id="tabMap">
+            <a href="#tabs-1"><h5 class="tabbers">Map</h5></a></li>
+        <li id="tabDetail">
+            <a href="#tabs-2"><h5 class="tabbers">Facility Details</h5></a></li>
+    </ul>
+    <div id="tabs-1">
+   		<div id="map_canvas"></div> 
+    </div>
+    <div id="tabs-2">
+        <h5 class="depotinfo"> FAIRWAY DISPOSAL </h5>
+        <p> Accepts various household, resellable goods. All items accepted are for charitable donation and must be in good working condition. Please see details and call to confirm your needs will be met.</p>
+        <p>Address: 1234 Fairview Ave., Vancouver, BC V6K 1P8</p>
+        <p>Phone Number: 604-849-1435</p>
+        <p>Hours: M-F 8-5, Sa-Su 9-4</p>
+        <p>Website: <a>http://www.fairwaydisposal.ca/</a></p>
+    </div>
+</div>
+
+</div>
+
+</body>
+
+</html>

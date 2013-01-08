@@ -1,0 +1,1050 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+<meta charset='utf-8' name="viewport" content="initial-scale=1.0, user-scalable=no"/>
+
+<title>Metro Vancouver Recycles</title>
+
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.9.1/themes/base/jquery-ui.css" />
+<link rel="stylesheet" href="../css/bootstrap.css" />
+<link rel="stylesheet" href="../css/style.css" />
+<script src="http://code.jquery.com/jquery-1.8.2.js"></script>
+<script src="http://code.jquery.com/ui/1.9.1/jquery-ui.js"></script>
+<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false&v=3&libraries=geometry"></script>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDq73a8G7Podf-O4448XegyuiQ107WzlLg&sensor=true"></script>
+
+<script type="text/javascript">
+var geocoder;
+var map;
+var myLat = 49.2404215;
+var myLng = -123.1164608;
+var myLatlng = new google.maps.LatLng(myLat,myLng);
+var infoWindow = new google.maps.InfoWindow();
+var address;
+var myPos;
+var material;
+var additions = 0;
+var marker1;
+var content1;
+var marker2;
+var content2;
+var marker3;
+var content3;
+var marker4;
+var content4;
+var marker5;
+var content5;
+var marker6;
+var content6;
+var marker7;
+var content7;
+var marker8;
+var content8;
+var marker9;
+var content9;
+var marker10;
+var content10;
+var marker11;
+var content11;
+var marker12;
+var content12;
+var marker13;
+var content13;
+var marker14;
+var content14;
+var marker15;
+var content15;
+
+$(function() {
+    $( "#accordion" ).accordion({heightStyle: "content"});
+});
+
+$(function() {
+    $( "#tabs" ).tabs();
+});
+
+function getDetails(num)
+{
+  if(num == 1){
+      infoWindow.close();
+      infoWindow.setContent(content1);
+      infoWindow.open(map, marker1);
+  }
+  if(num == 2){
+      infoWindow.close();
+      infoWindow.setContent(content2);
+      infoWindow.open(map, marker2);
+  }
+  if(num == 3){
+      infoWindow.close();
+      infoWindow.setContent(content3);
+      infoWindow.open(map, marker3);
+  }
+  if(num == 4){
+      infoWindow.close();
+      infoWindow.setContent(content4);
+      infoWindow.open(map, marker4);
+  }
+  if(num == 5){
+      infoWindow.close();
+      infoWindow.setContent(content5);
+      infoWindow.open(map, marker5);
+  }
+  if(num == 6){
+      infoWindow.close();
+      infoWindow.setContent(content6);
+      infoWindow.open(map, marker6);
+  }
+  if(num == 7){
+      infoWindow.close();
+      infoWindow.setContent(content7);
+      infoWindow.open(map, marker7);
+  }
+  if(num == 8){
+      infoWindow.close();
+      infoWindow.setContent(content8);
+      infoWindow.open(map, marker8);
+  }
+  if(num == 9){
+      infoWindow.close();
+      infoWindow.setContent(content9);
+      infoWindow.open(map, marker9);
+  }
+  if(num == 10){
+      infoWindow.close();
+      infoWindow.setContent(content10);
+      infoWindow.open(map, marker10);
+  }
+  if(num == 11){
+      infoWindow.close();
+      infoWindow.setContent(content11);
+      infoWindow.open(map, marker11);
+  }
+  if(num == 12){
+      infoWindow.close();
+      infoWindow.setContent(content12);
+      infoWindow.open(map, marker12);
+  }
+  if(num == 13){
+      infoWindow.close();
+      infoWindow.setContent(content13);
+      infoWindow.open(map, marker13);
+  }
+  if(num == 14){
+      infoWindow.close();
+      infoWindow.setContent(content14);
+      infoWindow.open(map, marker14);
+  }
+  if(num == 15){
+      infoWindow.close();
+      infoWindow.setContent(content15);
+      infoWindow.open(map, marker15);
+  }
+}
+
+function addMat()
+{
+  if (additions == 0){
+    document.getElementById('second').innerHTML = document.getElementById('add').innerHTML;
+  }
+  if (additions == 1){
+    document.getElementById('third').innerHTML = document.getElementById('add').innerHTML;
+  }
+  if (additions == 2){
+    document.getElementById('fourth').innerHTML = document.getElementById('add').innerHTML;
+  }
+  if (additions == 3){
+    document.getElementById('fifth').innerHTML = document.getElementById('add').innerHTML;
+  }
+
+  additions = additions + 1;
+}
+
+function editList()
+{
+  var list = document.getElementById('mat');
+
+  if(document.getElementById('matcat').value == 'Plastic')
+  {
+    material = 1;
+    list.options[0] = new Option('select a material...', 'n/a');
+    list.options[1] = new Option('#1 PET - Plastic', '#1 PET - Plastic');
+    list.options[2] = new Option('#2 HDPE - Plastic', '#2 HDPE - Plastic');
+    list.options[3] = new Option('#3 PVC - Plastic', '#3 PVC - Plastic');
+    list.options[4] = new Option('#4 LDPE - Plastic', '#4 LDPE - Plastic');
+    list.options[5] = new Option('#5 PP - Plastic', '#5 PP - Plastic');
+    list.options[6] = new Option('#6 EXPANDED PS - Plastic', '#6 EXPANDED PS - Plastic');
+    list.options[7] = new Option('#6 Peanuts - Plastic', '#6 Peanuts - Plastic');
+    list.options[8] = new Option('#6 PS - Plastic', '#6 PS - Plastic');
+    list.options[9] = new Option('#7 OTHER - Plastic', '#7 OTHER - Plastic');
+    list.options[10] = new Option('#5 PP - Plastic', '#5 PP - Plastic');
+    list.options[11] = new Option('All Plastics', 'All Plastics');
+    list.options[12] = new Option('Bottles and Containers', 'Bottles and Containers');
+    list.options[13] = new Option('Film - Plastic', 'Film - Plastic');
+    list.options[14] = new Option('Food Containers', 'Food Containers');
+    list.options[15] = new Option('Hard Plastic', 'Hard Plastic');
+    list.options[16] = new Option('Plant Pots', 'Plant Pots');
+    list.options[17] = new Option('Plastic Drums', 'Plastic Drums');
+    list.options[18] = new Option('PVC Pipe', 'PVC Pipe');
+    list.options[19] = new Option('Shopping Bags', 'Shopping Bags');
+  }
+
+  if(document.getElementById('matcat').value == 'Paper and Cardboard')
+  {
+    material = 2;
+    list.options[0] = new Option('select a material...', 'n/a');
+    list.options[1] = new Option('Books', 'Books');
+    list.options[2] = new Option('Comic Books', 'Comic Books');
+    list.options[3] = new Option('Corrugated Cardboard', 'Corrugated Cardboard');
+    list.options[4] = new Option('Magazines', 'Magazines');
+    list.options[5] = new Option('Mixed Paper', 'Mixed Paper');
+    list.options[6] = new Option('Newspaper', 'Newspaper');
+    list.options[7] = new Option('Phone Books', 'Phone Books');
+  }
+
+  if(document.getElementById('matcat').value == 'Furniture and Mattresses')
+  {
+    material = 3;
+    list.options[0] = new Option('select a material...', 'n/a');
+    list.options[1] = new Option('Furniture', 'Furniture');
+    list.options[2] = new Option('Mattresses', 'Mattresses');
+    list.options[3] = new Option('Office Furniture', 'Office Furniture');
+    list.options[4] = new Option('Outdoor Furniture', 'Outdoor Furniture');
+  }
+
+  if(document.getElementById('matcat').value == 'Beverage Containers')
+  {
+    material = 4;
+    list.options[0] = new Option('select a material...', 'n/a');
+    list.options[1] = new Option('Beer / Wine / Alcohol - Bottles', 'Beer / Wine / Alcohol - Bottles');
+    list.options[2] = new Option('Milk Cartons and Milk Substitutes', 'Milk Cartons and Milk Substitutes');
+    list.options[3] = new Option('Pop / Juice / Water - Bottles', 'Pop / Juice / Water - Bottles');
+  }
+  
+  if(document.getElementById('matcat').value == 'Organics')
+  {
+    material = 5;
+    list.options[0] = new Option('select a material...', 'n/a');
+    list.options[1] = new Option('Animal Carcasses', 'Animal Carcasses');
+    list.options[2] = new Option('Animal Waste', 'Animal Waste');
+    list.options[3] = new Option('Christmas Trees', 'Christmas Trees');
+    list.options[4] = new Option('Fats Oil and Grease (FOG)', 'Fats Oil and Grease (FOG)');
+    list.options[5] = new Option('Food Scraps', 'Food Scraps');
+    list.options[6] = new Option('Food Soiled Paper / Cardboard', 'Food Soiled Paper / Cardboard');
+    list.options[7] = new Option('Sod', 'Sod');
+    list.options[8] = new Option('Soil', 'Soil');
+    list.options[9] = new Option('Surplus Food', 'Surplus Food');
+    list.options[10] = new Option('Untreated Wood', 'Untreated Wood');
+    list.options[11] = new Option('Yard and Garden Trimmings', 'Yard and Garden Trimmings');
+  }
+
+}
+
+function search()
+{   
+    document.getElementById('depots').innerHTML = "";
+
+	  geocoder = new google.maps.Geocoder();
+  	var mapDiv = document.getElementById('map_canvas');
+  	map = new google.maps.Map(mapDiv, {
+    	center: myLatlng,
+    	zoom: 10,
+    	mapTypeId: google.maps.MapTypeId.ROADMAP
+  	});
+
+    var check = 0;
+
+    if(document.getElementById('service').checked == false && document.getElementById('service2').checked == false)
+    { 
+      check = 1; 
+    } 
+
+    if(document.getElementById('servtype').value == 'n/a' || document.getElementById('matcat').value == 'n/a' || document.getElementById('mat').value == 'n/a')
+    {
+      check = 1;
+    }
+
+    if (check == 1)
+    {
+      alert('You must enter values for Steps 1, 2, and 3 in order to search.');
+    }
+    else
+    {
+  	  address = document.getElementById('local').value;
+  	  if (address != "") {
+  	  geocoder.geocode( { 'address': address }, function(results, status) {
+        if (status == google.maps.GeocoderStatus.OK) {
+          map.setCenter(results[0].geometry.location);
+          myPos = results[0].geometry.location;
+          addMarkers();
+          var marker = new google.maps.Marker({
+              map: map,
+              position: results[0].geometry.location,
+              title: 'Start Location',
+              icon: '../images/star.png'
+          });
+        }
+      });}
+      else
+      {
+         addMarkers();
+      }  
+    }
+}
+
+function initialize() 
+{
+  geocoder = new google.maps.Geocoder();
+  var mapDiv = document.getElementById('map_canvas');
+  map = new google.maps.Map(mapDiv, {
+    center: myLatlng,
+    zoom: 10,
+    mapTypeId: google.maps.MapTypeId.ROADMAP
+  });
+}
+
+function addMarkers() 
+{ 
+  var city = 0;
+  if (document.getElementById('city').value == 'Vancouver')
+  {
+    city = 1;
+  }
+  if (document.getElementById('city').value == 'Burnaby')
+  {
+    city = 2;
+  }
+  if (document.getElementById('city').value == 'Richmond')
+  {
+    city = 3;
+  }
+  if (document.getElementById('city').value == 'Delta')
+  {
+    city = 4;
+  }
+  if (document.getElementById('city').value == 'Surrey')
+  {
+    city = 5;
+  }
+  if (document.getElementById('city').value == 'North Vancouver')
+  {
+    city = 6;
+  }
+  if (document.getElementById('city').value == 'New Westminster')
+  {
+    city = 7;
+  }
+
+  if ((city == 1 || city == 0) && material == 1){
+	var point = new google.maps.LatLng(49.2501930,-123.1049230);
+	marker1 = new google.maps.Marker({position: point, map: map, title: 'Fairway Disposal'});
+	content1 = '<b>Fairway Disposal</b></br>'+'1234 Fairview Ave., Vancouver, BC V6K 1P8</br>'+
+					'604-849-1435</br>'+'M-F 8-5, Sa-Su 9-4</br>';
+	google.maps.event.addListener(marker1, 'click', function() {
+        infoWindow.close();
+        infoWindow.setContent(content1);
+        infoWindow.open(map, marker1);
+    });
+
+    var table = document.getElementById('depots');
+    var row = document.createElement("tr");
+	row.onclick = function() {
+	var table = document.getElementById('depots');
+	console.log("rows: "+table.rows.length);
+	for(var i=0; i < table.rows.length; i++)
+	{
+		var row = table.rows[i];
+		console.log("row highlight");
+		row.style.backgroundColor = "#FFFFFF";
+	}
+	this.style.backgroundColor = "#D7FFD2";
+	};
+    var cell1 = document.createElement("td");
+    cell1.innerHTML = "<a href='javascript:void(0)' class='links' onclick='getDetails(1)'>Fairway Disposal</a>";
+    var cell2 = document.createElement("td");
+    cell2.innerHTML = 1;
+    var cell3 = document.createElement("td");
+    if(address != ""){
+    cell3.innerHTML = Math.round(((google.maps.geometry.spherical.computeDistanceBetween(myPos,point)/1000)*10))/10 + " km";
+    }
+    else{ cell3.innerHTML = "N/A"; }
+    row.appendChild(cell1);
+    row.appendChild(cell2);
+    row.appendChild(cell3);
+    table.appendChild(row);
+  }
+
+  if ((city == 1 || city == 0) && material == 2){
+	var point = new google.maps.LatLng(49.2404215,-123.1164608);
+	marker2 = new google.maps.Marker({position: point, map: map, title: 'EconoPro'});
+	content2 = '<b>EconoPro</b></br>'+'319 16th Ave., Vancouver, BC V6K 1P8</br>'+
+					'604-849-1435</br>'+'M-F 8-5, Sa-Su 9-4</br>';
+	google.maps.event.addListener(marker2, 'click', function() {
+        infoWindow.close();
+        infoWindow.setContent(content2);
+        infoWindow.open(map, marker2);
+    });
+
+    var table = document.getElementById('depots');
+    var row = document.createElement("tr");
+    var cell1 = document.createElement("td");
+    cell1.innerHTML = "<a href='javascript:void(0)' class='links' onclick='getDetails(2)'>EconoPro</a>";
+    var cell2 = document.createElement("td");
+    cell2.innerHTML = 1;
+    var cell3 = document.createElement("td");
+    if(address != ""){
+    cell3.innerHTML = Math.round(((google.maps.geometry.spherical.computeDistanceBetween(myPos, point)/1000)*10))/10 + " km";
+    }
+    else{ cell3.innerHTML = "N/A"; }
+    row.appendChild(cell1);
+    row.appendChild(cell2);
+    row.appendChild(cell3);
+    table.appendChild(row);
+  }
+
+  if ((city == 1 || city == 0) && material == 3) {
+  var point = new google.maps.LatLng(49.2404215,-123.1464608);
+  marker5 = new google.maps.Marker({position: point, map: map, title: 'Waste Cleaners'});
+  content5 = '<b>Waste Cleaners</b></br>'+'1445 Broadway St., Vancouver, BC V6K 1P8</br>'+
+          '604-849-1435</br>'+'M-F 8-5, Sa-Su 9-4</br>';
+  google.maps.event.addListener(marker5, 'click', function() {
+        infoWindow.close();
+        infoWindow.setContent(content5);
+        infoWindow.open(map, marker5);
+    });
+
+    var table = document.getElementById('depots');
+    var row = document.createElement("tr");
+    var cell1 = document.createElement("td");
+    cell1.innerHTML = "<a href='javascript:void(0)' class='links' onclick='getDetails(5)'>Waste Cleaners</a>";
+    var cell2 = document.createElement("td");
+    cell2.innerHTML = 1;
+    var cell3 = document.createElement("td");
+    if(address != ""){
+    cell3.innerHTML = Math.round(((google.maps.geometry.spherical.computeDistanceBetween(myPos, point)/1000)*10))/10 + " km";
+    }
+    else{ cell3.innerHTML = "N/A"; }
+    row.appendChild(cell1);
+    row.appendChild(cell2);
+    row.appendChild(cell3);
+    table.appendChild(row);
+  }
+
+  if ((city == 1 || city == 0) && material == 4) {
+  var point = new google.maps.LatLng(49.2604215,-123.1864608);
+  marker10 = new google.maps.Marker({position: point, map: map, title: 'Vancouver Recycling Depot'});
+  content10 = '<b>Vancouver Recycling Depot</b></br>'+'877 Dunbar St., Vancouver, BC V6K 1P8</br>'+
+          '604-849-1435</br>'+'M-F 8-5, Sa-Su 9-4</br>';
+  google.maps.event.addListener(marker10, 'click', function() {
+        infoWindow.close();
+        infoWindow.setContent(content10);
+        infoWindow.open(map, marker10);
+    });
+
+    var table = document.getElementById('depots');
+    var row = document.createElement("tr");
+    var cell1 = document.createElement("td");
+    cell1.innerHTML = "<a href='javascript:void(0)' class='links' onclick='getDetails(10)'>Vancouver Recycling Depot</a>";
+    var cell2 = document.createElement("td");
+    cell2.innerHTML = 1;
+    var cell3 = document.createElement("td");
+    if(address != ""){
+    cell3.innerHTML = Math.round(((google.maps.geometry.spherical.computeDistanceBetween(myPos, point)/1000)*10))/10 + " km";
+    }
+    else{ cell3.innerHTML = "N/A"; }
+    row.appendChild(cell1);
+    row.appendChild(cell2);
+    row.appendChild(cell3);
+    table.appendChild(row);
+  }
+
+  if ((city == 2 || city == 0) && material == 5) {
+  point = new google.maps.LatLng(49.2404215,-123.0064608);
+  marker4 = new google.maps.Marker({position: point, map: map, title: 'Plastic Returns'});
+  var content4 = '<b>Plastic Returns</b></br>'+'1149 Industry Way, Burnaby, BC V6K 1P8</br>'+
+          '604-849-1435</br>'+'M-F 8-5, Sa-Su 9-4</br>';
+  google.maps.event.addListener(marker4, 'click', function() {
+        infoWindow.close();
+        infoWindow.setContent(content4);
+        infoWindow.open(map, marker4);
+    });
+
+    var table = document.getElementById('depots');
+    var row = document.createElement("tr");
+    var cell1 = document.createElement("td");
+    cell1.innerHTML = "<a href='javascript:void(0)' class='links' onclick='getDetails(4)'>Plastic Returns</a>";
+    var cell2 = document.createElement("td");
+    cell2.innerHTML = 1;
+    var cell3 = document.createElement("td");
+    if(address != ""){
+    cell3.innerHTML = Math.round(((google.maps.geometry.spherical.computeDistanceBetween(myPos, point)/1000)*10))/10 + " km";
+    }
+    else{ cell3.innerHTML = "N/A"; }
+    row.appendChild(cell1);
+    row.appendChild(cell2);
+    row.appendChild(cell3);
+    table.appendChild(row);
+  }
+
+  if ((city == 2 || city == 0) && material == 1) {
+  var point = new google.maps.LatLng(49.2704215,-123.0064608);
+  marker9 = new google.maps.Marker({position: point, map: map, title: 'Waste Management Co.'});
+  content9 = '<b>Waste Management Co.</b></br>'+'1234 Fairview Ave., Burnaby, BC V6K 1P8</br>'+
+          '604-849-1435</br>'+'M-F 8-5, Sa-Su 9-4</br>';
+  google.maps.event.addListener(marker9, 'click', function() {
+        infoWindow.close();
+        infoWindow.setContent(content9);
+        infoWindow.open(map, marker9);
+    });
+
+    var table = document.getElementById('depots');
+    var row = document.createElement("tr");
+	row.onclick = function() {
+		var table = document.getElementById('depots');
+	console.log("rows: "+table.rows.length);
+	for(var i=0; i < table.rows.length; i++)
+	{
+		var row = table.rows[i];
+		console.log("row highlight");
+		row.style.backgroundColor = "#FFFFFF";
+	}
+	this.style.backgroundColor = "#D7FFD2";
+	};
+    var cell1 = document.createElement("td");
+    cell1.innerHTML = "<a href='javascript:void(0)' class='links' onclick='getDetails(9)'>Waste Management Co.</a>";
+    var cell2 = document.createElement("td");
+    cell2.innerHTML = 1;
+    var cell3 = document.createElement("td");
+    if(address != ""){
+    cell3.innerHTML = Math.round(((google.maps.geometry.spherical.computeDistanceBetween(myPos, point)/1000)*10))/10 + " km";
+    }
+    else{ cell3.innerHTML = "N/A"; }
+    row.appendChild(cell1);
+    row.appendChild(cell2);
+    row.appendChild(cell3);
+    table.appendChild(row);
+  }
+
+  if ((city == 2 || city == 0) && material == 2) {
+  var point = new google.maps.LatLng(49.2104215,-123.0064608);
+  marker11 = new google.maps.Marker({position: point, map: map, title: 'Burnaby Waste Depot'});
+  content11 = '<b>Burnaby Waste Depot</b></br>'+'187 Fir St., Burnaby, BC V6K 1P8</br>'+
+          '604-849-1435</br>'+'M-F 8-5, Sa-Su 9-4</br>';
+  google.maps.event.addListener(marker11, 'click', function() {
+        infoWindow.close();
+        infoWindow.setContent(content11);
+        infoWindow.open(map, marker11);
+    });
+
+    var table = document.getElementById('depots');
+    var row = document.createElement("tr");
+    var cell1 = document.createElement("td");
+    cell1.innerHTML = "<a href='javascript:void(0)' class='links' onclick='getDetails(11)'>Burnaby Waste Depot</a>";
+    var cell2 = document.createElement("td");
+    cell2.innerHTML = 1;
+    var cell3 = document.createElement("td");
+    if(address != ""){
+    cell3.innerHTML = Math.round(((google.maps.geometry.spherical.computeDistanceBetween(myPos, point)/1000)*10))/10 + " km";
+    }
+    else{ cell3.innerHTML = "N/A"; }
+    row.appendChild(cell1);
+    row.appendChild(cell2);
+    row.appendChild(cell3);
+    table.appendChild(row);
+  }
+
+  if ((city == 3 || city == 0) && material == 3) {
+	var point = new google.maps.LatLng(49.1593093,-123.1103930);
+	marker3 = new google.maps.Marker({position: point, map: map, title: '1-800-Recycle'});
+	content3 = '<b>1-800-Recycle</b></br>'+'1234 Fairview Ave., Richmond, BC V6K 1P8</br>'+
+					'604-849-1435</br>'+'M-F 8-5, Sa-Su 9-4</br>';
+	google.maps.event.addListener(marker3, 'click', function() {
+        infoWindow.close();
+        infoWindow.setContent(content3);
+        infoWindow.open(map, marker3);
+    });
+
+    var table = document.getElementById('depots');
+    var row = document.createElement("tr");
+    var cell1 = document.createElement("td");
+    cell1.innerHTML = "<a href='javascript:void(0)' class='links' onclick='getDetails(3)'>1-800-Recycle</a>";
+    var cell2 = document.createElement("td");
+    cell2.innerHTML = 1;
+    var cell3 = document.createElement("td");
+    if(address != ""){
+    cell3.innerHTML = Math.round(((google.maps.geometry.spherical.computeDistanceBetween(myPos, point)/1000)*10))/10 + " km";
+    }
+    else{ cell3.innerHTML = "N/A"; }
+    row.appendChild(cell1);
+    row.appendChild(cell2);
+    row.appendChild(cell3);
+    table.appendChild(row);
+  }
+
+  if ((city == 3 || city == 0) && material == 4) {
+  var point = new google.maps.LatLng(49.1590421,-123.0800008);
+  marker7 = new google.maps.Marker({position: point, map: map, title: 'We Buy Garbage'});
+  content7 = '<b>We Buy Garbage</b></br>'+'129 Brampton St., Richmond, BC V6K 1P8</br>'+
+          '604-849-1435</br>'+'M-F 8-5, Sa-Su 9-4</br>';
+  google.maps.event.addListener(marker7, 'click', function() {
+        infoWindow.close();
+        infoWindow.setContent(content7);
+        infoWindow.open(map, marker7);
+    });
+
+    var table = document.getElementById('depots');
+    var row = document.createElement("tr");
+    var cell1 = document.createElement("td");
+    cell1.innerHTML = "<a href='javascript:void(0)' class='links' onclick='getDetails(7)'>We Buy Garbage</a>";
+    var cell2 = document.createElement("td");
+    cell2.innerHTML = 1;
+    var cell3 = document.createElement("td");
+    if(address != ""){
+    cell3.innerHTML = Math.round(((google.maps.geometry.spherical.computeDistanceBetween(myPos, point)/1000)*10))/10 + " km";
+    }
+    else{ cell3.innerHTML = "N/A"; }
+    row.appendChild(cell1);
+    row.appendChild(cell2);
+    row.appendChild(cell3);
+    table.appendChild(row);
+  }
+
+  if ((city == 4 || city == 0) && material == 5) {
+  var point = new google.maps.LatLng(49.1304215,-123.0064608);
+  marker12 = new google.maps.Marker({position: point, map: map, title: 'Delta Disposal'});
+  content12 = '<b>Delta Disposal</b></br>'+'847 Amber Way, Delta, BC V6K 1P8</br>'+
+          '604-849-1435</br>'+'M-F 8-5, Sa-Su 9-4</br>';
+  google.maps.event.addListener(marker12, 'click', function() {
+        infoWindow.close();
+        infoWindow.setContent(content12);
+        infoWindow.open(map, marker12);
+    });
+
+    var table = document.getElementById('depots');
+    var row = document.createElement("tr");
+    var cell1 = document.createElement("td");
+    cell1.innerHTML = "<a href='javascript:void(0)' class='links' onclick='getDetails(12)'>Delta Disposal</a>";
+    var cell2 = document.createElement("td");
+    cell2.innerHTML = 1;
+    var cell3 = document.createElement("td");
+    if(address != ""){
+    cell3.innerHTML = Math.round(((google.maps.geometry.spherical.computeDistanceBetween(myPos, point)/1000)*10))/10 + " km";
+    }
+    else{ cell3.innerHTML = "N/A"; }
+    row.appendChild(cell1);
+    row.appendChild(cell2);
+    row.appendChild(cell3);
+    table.appendChild(row);
+  }
+
+  if ((city == 5 || city == 0) && material == 1) {
+	var point = new google.maps.LatLng(49.1304215,-122.8000608);
+	marker6 = new google.maps.Marker({position: point, map: map, title: 'Green Coast Rubbish'});
+	content6 = '<b>Green Coast Rubbish</b></br>'+'605 Brand St., Surrey, BC V6K 1P8</br>'+
+					'604-849-1435</br>'+'M-F 8-5, Sa-Su 9-4</br>';
+	google.maps.event.addListener(marker6, 'click', function() {
+        infoWindow.close();
+        infoWindow.setContent(content6);
+        infoWindow.open(map, marker6);
+    });
+
+    var table = document.getElementById('depots');
+    var row = document.createElement("tr");
+    var cell1 = document.createElement("td");
+    cell1.innerHTML = "<a href='javascript:void(0)' class='links' onclick='getDetails(6)'>Green Coast Rubbish</a>";
+    var cell2 = document.createElement("td");
+    cell2.innerHTML = 1;
+    var cell3 = document.createElement("td");
+    if(address != ""){
+    cell3.innerHTML = Math.round(((google.maps.geometry.spherical.computeDistanceBetween(myPos, point)/1000)*10))/10 + " km";
+    }
+    else{ cell3.innerHTML = "N/A"; }
+    row.appendChild(cell1);
+    row.appendChild(cell2);
+    row.appendChild(cell3);
+    table.appendChild(row);
+  }
+
+  if ((city == 5 || city == 0) && material == 2) {
+  var point = new google.maps.LatLng(49.1304215,-122.8300000);
+  marker13 = new google.maps.Marker({position: point, map: map, title: 'Orange Bins'});
+  content13 = '<b>Orange Bins</b></br>'+'3492 Strathaven Lane, Surrey, BC V6K 1P8</br>'+
+          '604-849-1435</br>'+'M-F 8-5, Sa-Su 9-4</br>';
+  google.maps.event.addListener(marker13, 'click', function() {
+        infoWindow.close();
+        infoWindow.setContent(content13);
+        infoWindow.open(map, marker13);
+    });
+
+    var table = document.getElementById('depots');
+    var row = document.createElement("tr");
+    var cell1 = document.createElement("td");
+    cell1.innerHTML = "<a href='javascript:void(0)' class='links' onclick='getDetails(13)'>Orange Bins</a>";
+    var cell2 = document.createElement("td");
+    cell2.innerHTML = 1;
+    var cell3 = document.createElement("td");
+    if(address != ""){
+    cell3.innerHTML = Math.round(((google.maps.geometry.spherical.computeDistanceBetween(myPos, point)/1000)*10))/10 + " km";
+    }
+    else{ cell3.innerHTML = "N/A"; }
+    row.appendChild(cell1);
+    row.appendChild(cell2);
+    row.appendChild(cell3);
+    table.appendChild(row);
+  }
+
+  if ((city == 5 || city == 0) && material == 3) {
+  var point = new google.maps.LatLng(49.1504215,-122.8800000);
+  marker14 = new google.maps.Marker({position: point, map: map, title: 'Surrey Central Return-It'});
+  content14 = '<b>Surrey Central Return-It</b></br>'+'1234 104th Ave., Vancouver, BC V6K 1P8</br>'+
+          '604-849-1435</br>'+'M-F 8-5, Sa-Su 9-4</br>';
+  google.maps.event.addListener(marker14, 'click', function() {
+        infoWindow.close();
+        infoWindow.setContent(content14);
+        infoWindow.open(map, marker14);
+    });
+
+    var table = document.getElementById('depots');
+    var row = document.createElement("tr");
+    var cell1 = document.createElement("td");
+    cell1.innerHTML = "<a href='javascript:void(0)' class='links' onclick='getDetails(14)'>Surrey Central Return-It</a>";;
+    var cell2 = document.createElement("td");
+    cell2.innerHTML = 1;
+    var cell3 = document.createElement("td");
+    if(address != ""){
+    cell3.innerHTML = Math.round(((google.maps.geometry.spherical.computeDistanceBetween(myPos, point)/1000)*10))/10 + " km";
+    }
+    else{ cell3.innerHTML = "N/A"; }
+    row.appendChild(cell1);
+    row.appendChild(cell2);
+    row.appendChild(cell3);
+    table.appendChild(row);
+  }
+
+  if ((city == 6 || city == 0) && material == 4) {
+	var point = new google.maps.LatLng(49.3204215,-123.1164608);
+	marker8 = new google.maps.Marker({position: point, map: map, title: 'Tidy Trailer'});
+	content8 = '<b>Tidy Trailer</b></br>'+'1234 Fairview Ave., North Vancouver, BC V6K 1P8</br>'+
+					'604-849-1435</br>'+'M-F 8-5, Sa-Su 9-4</br>';
+	google.maps.event.addListener(marker8, 'click', function() {
+        infoWindow.close();
+        infoWindow.setContent(content8);
+        infoWindow.open(map, marker8);
+    });
+
+    var table = document.getElementById('depots');
+    var row = document.createElement("tr");
+	row.onclick = highlight();
+    var cell1 = document.createElement("td");
+    cell1.innerHTML = "<a href='javascript:void(0)' class='links' onclick='getDetails(8)'>Tidy Trailer</a>";
+    var cell2 = document.createElement("td");
+    cell2.innerHTML = 1;
+    var cell3 = document.createElement("td");
+    if(address != ""){
+    cell3.innerHTML = Math.round(((google.maps.geometry.spherical.computeDistanceBetween(myPos, point)/1000)*10))/10 + " km";
+    }
+    else{ cell3.innerHTML = "N/A"; }
+    row.appendChild(cell1);
+    row.appendChild(cell2);
+    row.appendChild(cell3);
+    table.appendChild(row);
+  }
+
+  if ((city == 7 || city == 0) && material == 5) {
+	var point = new google.maps.LatLng(49.2304215,-122.8964608);
+	marker15 = new google.maps.Marker({position: point, map: map, title: 'Wastech'});
+	content15 = '<b>Wastech</b></br>'+'3100 United Blvd., New Westminster, BC V6K 1P8</br>'+
+					'604-849-1435</br>'+'M-F 8-5, Sa-Su 9-4</br>';
+	google.maps.event.addListener(marker15, 'click', function() {
+        infoWindow.close();
+        infoWindow.setContent(content15);
+        infoWindow.open(map, marker15);
+    });
+
+    var table = document.getElementById('depots');
+    var row = document.createElement("tr");
+    var cell1 = document.createElement("td");
+    cell1.innerHTML = "<a href='javascript:void(0)' class='links' onclick='getDetails(15)'>Wastech</a>";
+    var cell2 = document.createElement("td");
+    cell2.innerHTML = 1;
+    var cell3 = document.createElement("td");
+    if(address != ""){
+    cell3.innerHTML = Math.round(((google.maps.geometry.spherical.computeDistanceBetween(myPos, point)/1000)*10))/10 + " km";
+    }
+    else{ cell3.innerHTML = "N/A"; }
+    row.appendChild(cell1);
+    row.appendChild(cell2);
+    row.appendChild(cell3);
+    table.appendChild(row);
+  }
+	
+}
+
+function highlight()
+{
+	var table = document.getElementById('depots');
+	console.log("highlight")
+	for(var i=0, row;row = table.rows[i];i++)
+	{
+		console.log("row highlight");
+		eval(row + ".style.backgroundColor = \"#D7FFD2\"");
+	}
+}
+
+</script>
+
+</head>
+
+<body onload="initialize()">
+
+<div class="header">
+	<div class="mvLogo"><img src="../images/MVLogo.jpeg"></div>
+	<div class="mvRecycles"><img src="../images/MVRecycles.png"></div>
+	<div class="recycleIcon"><img src="../images/Icon.png"></div>
+</div>
+
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar-inner">
+   	    <div class="container">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <div class="nav-collapse collapse">
+            <ul class="nav">
+              <li class="active"><a href="index.html">RECYCLING SERVICES</a></li>
+              <li><a href="bluebox.html">BLUE BOX INFO</a></li>
+              <li><a href="zerowaste.html">ZERO WASTE INFO</a></li>
+            </ul>
+          </div>
+        </div>
+    </div>
+</div>
+
+<div class="leftTabsContainer">
+	<a target="_blank" href="http://www.facebook.com/share.php?u=http://www.metrovancouverrecycles.org">	
+	<img src="../images/FaceBook.png" alt="Facebook" title="Facebook" hover="../images/FaceBookHover.png"></a>
+
+	<a href="https://twitter.com/intent/tweet?text=Metro%20Vancouver%20Recycles%20http://www.metrovancouverrecycles.org" target="_blank">
+	<img src="../images/Twitter.png" alt="Twitter" title="Twitter" hover="../images/TwitterHover.png"></a>
+
+	<a href="contact.html">
+	<img src="../images/ContactUs.png" alt="Contact Us" title="ContactUs" hover="../images/ContactUsHover.png"></a>
+
+	<a href="about.html">
+	<img src="../images/AboutUs.png" alt="About Us" title="About us" hover="../images/AboutUsHover.png"></a>
+</div>
+
+<div class="quick">
+    <ul class="nav">
+      <a href="indexquick.html"><li class="btn btn-primary">Quick Search</li></a>
+    </ul>
+</div>
+
+<div class="search" id="accordion">
+
+	<h5 class="green"> STEP 1 </h5>
+
+  <div>
+		<div class="form-inline checkers">
+			<div class="float-left-small">
+			<label class="checkbox">
+      			<input type="checkbox" id="service" value="Residential"> Residential Services
+    		</label>
+    		</div>
+    		<label class="checkbox">
+      			<input type="checkbox" id="service2" value="Business"> Business Services
+    		</label>
+    	</div>
+  </div>
+	
+	<h5 class="green"> STEP 2 </h5>
+
+  <div>
+		<label>Service Type:</label>
+		<select id="servtype">
+  			<option value="n/a">select a service...</option>
+  			<option value="Buy Back">Buy Back</option>
+  			<option value="Drop Off">Drop Off</option>
+  			<option value="Pick Up">Pick Up</option>
+  			<option value="Asbestos Removal">Asbestos Removal</option>
+  			<option value="Asbestos Testing">Asbestos Testing</option>
+  			<option value="Confidential Paper Shredding">Confidential Paper Shredding</option>
+  			<option value="Deconstruction Contractors">Deconstruction / Salvage Contractors</option>
+  			<option value="Electronic Data Destruction">Electronic Data Destruction</option>
+  			<option value="Hazardous Waste Management">Hazardous Waste Management</option>
+  			<option value="Office Recycling">Office Recycling</option>
+  			<option value="Bin Suppliers">Recycling and Compost Bin Suppliers</option>
+  			<option value="Waste Assessments">Waste Audits / Assessments</option>
+		</select>
+  </div>
+
+	<h5 class="green"> STEP 3 </h5>
+
+  <div>
+    <div id="add">
+		<div class="float-left-small">
+		<label>Material Category:</label>
+		<select id="matcat" onchange="editList()">
+  			<option value="n/a">select a category...</option>
+  			<option value="Antiques and Collectibles">Antiques and Collectibles</option>
+  			<option value="Appliances">Appliances</option>
+  			<option value="Batteries">Batteries</option>
+  			<option value="Beauty and Personal Care">Beauty and Personal Care</option>
+  			<option value="Beverage Containers">Beverage Containers</option>
+  			<option value="Building Materials">Building Materials</option>
+  			<option value="Children and Maternity">Children and Maternity</option>
+  			<option value="Clothing and Accessories">Clothing and Accessories</option>
+  			<option value="Electronics and Computers">Electronics and Computers</option>
+  			<option value="Food Packaging">Food Packaging</option>
+  			<option value="Furniture and Mattresses">Furniture and Mattresses</option>
+  			<option value="Glass">Glass</option>
+  			<option value="Hazardous Materials">Hazardous Materials</option>
+  			<option value="Health and Medical">Health and Medical</option>
+  			<option value="Home and Garden">Home and Garden</option>
+  			<option value="Lightbulbs and Fixtures">Lightbulbs and Fixtures</option>
+  			<option value="Metal">Metal</option>
+  			<option value="Music Instruments and Equipment">Music Instruments and Equipment</option>
+  			<option value="Oil">Oil</option>
+  			<option value="Organics">Organics</option>
+  			<option value="Packign Materials">Packing Materials</option>
+  			<option value="Paint">Paint</option>
+  			<option value="Pallets">Pallets</option>
+  			<option value="Paper and Cardboard">Paper and Cardboard</option>
+  			<option value="Plastic">Plastic</option>
+  			<option value="Sewing and Textiles">Sewing and Textiles</option>
+  			<option value="Sporting Goods/Hobbies/Games">Sporting Goods/Hobbies/Games</option>
+  			<option value="Tires">Tires</option>
+		</select>
+		</div>
+
+		<label>Material:</label>
+		<select id="mat">
+      <option value="n/a">select a material...</option>
+		</select>
+    </div>
+
+    <div id="second"></div>
+    <div id="third"></div>
+    <div id="fourth"></div>
+    <div id="fifth"></div>
+
+    <div class="adder">
+      <ul class="nav">
+        <li class="btn btn-primary" onclick="addMat()">+</li>
+      </ul>
+    </div>
+	</div>
+
+	<h5 class="green"> STEP 4 (OPTIONAL) </h5>
+	
+  <div>		
+		<div class="float-left-smallest right-border">
+		<label class="pad">Start Location:</label>
+    	<input type="text" id="local" placeholder="Enter an address...">	
+
+    	<label>Distance from Location:</label>
+		<select id="distance">
+  			<option value="n/a">select a distance...</option>
+  			<option value="5">5km</option>
+  			<option value="10">10km</option>
+  			<option value="20">20km</option>
+  			<option value="30">30km</option>
+  			<option value="40">40km</option>
+  			<option value="50">50km</option>
+  			<option value="100">100km</option>
+		</select>
+		</div>
+
+		<div class="seccity">
+		<label>Select a City:</label>
+		<select id="city">
+  			<option value="n/a">select a location...</option>
+  			<option value="Abbostford">Abbostford</option>
+  			<option value="Aldergrove">Aldergrove</option>
+  			<option value="Anmore">Anmore</option>
+  			<option value="Belcarra">Belcarra</option>
+  			<option value="Bowen Island">Bowen Island</option>
+  			<option value="Burnaby">Burnaby</option>
+  			<option value="Coquitlam">Coquitlam</option>
+  			<option value="Delta">Delta</option>
+  			<option value="Ladner">Ladner</option>
+  			<option value="Langley">Langley</option>
+  			<option value="Lions Bay">Lions Bay</option>
+  			<option value="Maple Ridge">Maple Ridge</option>
+  			<option value="New Westminster">New Westminster</option>
+  			<option value="North Vancouver">North Vancouver</option>
+  			<option value="Pitt Meadows">Pitt Meadows</option>
+  			<option value="Port Coquitlam">Port Coquitlam</option>
+  			<option value="Port Moody">Port Moody</option>
+  			<option value="Richmond">Richmond</option>
+  			<option value="Surrey">Surrey</option>
+  			<option value="Tsawwassen">Tsawwassen</option>
+  			<option value="Vancouver">Vancouver</option>
+  			<option value="West Vancouver">West Vancouver</option>
+  			<option value="White Rock">White Rock</option>
+		</select>
+
+		</div>
+	</div>
+
+</div>
+
+<div class="buttons">
+  <ul class="nav">
+      <li class="btn btn-primary" onclick="search()">Search</li>
+      <a href="index.html"><li class="btn btn-primary">Reset</li></a>
+  </ul>
+</div>
+
+<div class="results">
+
+<h5 class="tablehead" id="head"> SEARCH RESULTS </h5>
+
+<div class="depots">
+	<table class="table table-hover">
+
+		<thead>
+    		<tr>
+      		<th><h5>FACILITY</h5></th>
+     	 		<th><h5># OF ITEMS</h5></th>
+     	 		<th><h5>DISTANCE</h5></th>
+    		</tr>
+  	</thead>
+
+    <tbody id="depots">
+
+    </tbody>
+
+	</table>
+</div>
+
+<div id="tabs" class="rightside">
+    <ul>
+        <li id="tabMap">
+            <a href="#tabs-1"><h5 class="tabbers">Map</h5></a></li>
+        <li id="tabDetail">
+            <a href="#tabs-2"><h5 class="tabbers">Facility Details</h5></a></li>
+    </ul>
+    <div id="tabs-1">
+   		<div id="map_canvas"></div> 
+    </div>
+    <div id="tabs-2">
+        <h5 class="depotinfo"> FAIRWAY DISPOSAL </h5>
+        <p> Accepts various household, resellable goods. All items accepted are for charitable donation and must be in good working condition. Please see details and call to confirm your needs will be met.</p>
+        <p>Address: 1234 Fairview Ave., Vancouver, BC V6K 1P8</p>
+        <p>Phone Number: 604-849-1435</p>
+        <p>Hours: M-F 8-5, Sa-Su 9-4</p>
+        <p>Website: <a>http://www.fairwaydisposal.ca/</a></p>
+    </div>
+</div>
+
+</div>
+
+</body>
+
+</html>
